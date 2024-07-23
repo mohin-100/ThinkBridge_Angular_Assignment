@@ -1,0 +1,16 @@
+.paginator-container {
+  margin-top: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 300px;
+}
+
+.mat-form-field {
+  width: 100%;
+}

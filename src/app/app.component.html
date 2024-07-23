@@ -1,0 +1,13 @@
+<div class="app-container">
+  <mat-toolbar color="primary" *ngIf="isLoggedIn()">
+    <span class="navbar-brand" [routerLink]="'/home'">FOODIE DELIGHT</span>
+    <span class="spacer"></span>
+    <button mat-button [routerLink]="'/home'">HOME</button>
+    <button mat-button [routerLink]="'/add-restaurant'">ADD RESTAURANT</button>
+    <button mat-button [routerLink]="'/login'">LOGOUT</button>
+  </mat-toolbar>
+
+  <main class="container my-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,49 @@
+<div class="home-container">
+  <div class="header-container">
+    <h2>Restaurants</h2>
+    <div class="search-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Restaurants">
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-table [dataSource]="restaurants" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let restaurant"> {{ restaurant.name }} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let restaurant"> {{ restaurant.description }} </mat-cell>
+    </ng-container>
+
+    <!-- Location Column -->
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *matCellDef="let restaurant"> {{ restaurant.location }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let restaurant">
+        <button mat-button color="primary" (click)="editRestaurant(restaurant.id)">Edit</button>
+        <button mat-button color="warn" (click)="deleteRestaurant(restaurant.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalRestaurants" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+      (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
+</div>
